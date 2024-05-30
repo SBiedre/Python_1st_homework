@@ -1,0 +1,42 @@
+print("Welcome to your bank account!")
+current_balance = 0.0
+print(f'Your current account balance is: {current_balance} Euro')
+
+while True:
+    try:
+        user_action = input('What would you like to do? Enter "deposit", "withdraw", "check balance", or "exit" to quit: ').strip().lower()
+
+        if user_action == 'exit':
+            print(f'Your total amount available is {current_balance} Euro')
+            print('Thank you for using our services. See you next time!')
+            break
+
+        elif user_action == 'deposit':
+            deposit_input = input('Please enter the amount you want to add to your account: ').strip()
+            deposit = float(deposit_input)
+            if deposit <= 0:
+                print('Deposit must be at least 1 euro. Please try again.')
+                continue
+            current_balance += deposit
+            print(f'You added {deposit_input} Euro to your account. Your current account balance is: {current_balance} Euro')
+
+        elif user_action == 'withdraw':
+            withdrawal_input = input('Please enter the amount you want to withdraw from your account: ').strip()
+            withdrawal = float(withdrawal_input)
+            if withdrawal <= 0:
+                print('Withdrawal must be at least 1 euro. Please try again.')
+                continue
+            if withdrawal > current_balance:
+                print('Insufficient funds. Withdrawal not possible.')
+                continue
+            current_balance -= withdrawal
+            print(f'You took {withdrawal_input} Euro from your account. Your current account balance is: {current_balance} Euro')
+
+        elif user_action == 'check balance':
+            print(f'Your current account balance is: {current_balance} Euro')
+
+        else:
+            print("Invalid input. Please enter 'deposit', 'withdraw', 'check balance', or 'exit'.")
+
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
