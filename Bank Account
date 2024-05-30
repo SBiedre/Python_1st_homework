@@ -1,4 +1,4 @@
-print("Welcome to your bank account!")
+print("Hello! Welcome to your bank account!")
 current_balance = 0.0
 print(f'Your current account balance is: {current_balance} Euro')
 
